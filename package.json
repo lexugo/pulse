@@ -1,0 +1,38 @@
+{
+  "name": "@lexugo/pulse",
+  "version": "0.1.0",
+  "description": "Utilities for using dates and time in React",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lexugo/pulse.git"
+  },
+  "keywords": [
+    "time",
+    "date",
+    "javascript",
+    "react",
+    "next.js",
+    "hook",
+    "component",
+    "date-fns"
+  ],
+  "author": "Hugo Laquerre",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/lexugo/pulse/issues"
+  },
+  "homepage": "https://github.com/lexugo/pulse#readme",
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "date-fns": "^2.28.0",
+    "@lexugo/neon": "^0.1.0"
+  },
+  "scripts": {
+    "test": "exit 0"
+  },
+  "publishConfig": {
+    "@lexugo:registry": "https://npm.pkg.github.com"
+  }
+}
