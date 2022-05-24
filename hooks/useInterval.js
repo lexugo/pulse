@@ -2,7 +2,7 @@ import { add } from '../services/frequency'
 
 import { useState } from 'react'
 
-export function useInterval(defaultFrom, defaultTo) {
+export default function useInterval(defaultFrom, defaultTo) {
 	const [start, setStart] = useState(defaultFrom)
 	const [end, setEnd] = useState(defaultTo)
 

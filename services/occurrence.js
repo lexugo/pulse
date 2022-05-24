@@ -1,27 +1,22 @@
-import {
-	differenceInBusinessDays,
-	differenceInCalendarDays,
-	differenceInCalendarMonths,
-	differenceInCalendarWeeks,
-	differenceInCalendarYears,
-	getDate,
-	getDay,
-	getDayOfYear,
-	getWeekOfMonth,
-	getWeek,
-	getMonth,
-	getYear,
-	isAfter,
-	isBefore,
-	isSameDay,
-	isWeekend,
-} from 'date-fns'
+import { isAfter, isBefore, isSameDay } from 'date-fns'
 
-// occurs(actual, on(expected))
-// occurs(actual, every(occurrence))
-export const occurs = (date, occursOn) => occursOn(date)
+import { get, differenceIn, is } from './frequency'
+import { birth } from './date'
 
+// occurs(actual, either(on(expected), every(occurrence)), since(birth), until(tomorrow))
+export const occurs = (date, ...occurrences) => occurrences.every(occursOn => occursOn(date))
+
+export const either = (...occurrences) => actual => occurrences.some(occursOn => occursOn(actual))
+
+/** Expect the actual date to be on the same as the occurrence */
 export const on = occurrence =>  actual => isSameDay(occurrence, actual)
+
+/** Expect the actual date to be before the occurrence */
+export const before = occurrence => actual => isBefore(occurrence, actual)
+export const until = occurrence => either(on(occurrence), before(occurrence))
+
+export const after = occurrence => actual => isAfter(occurrence, actual)
+export const since = occurrence => either(on(occurrence), after(occurrence))
 
 export const every = ({ interval = 1, frequency, on, since, until, except })  => {
 	if (interval < 1) throw new Error('interval must be positive')
